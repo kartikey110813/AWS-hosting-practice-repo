@@ -1,0 +1,45 @@
+
+   <nav class="navbar navbar-expand-lg navbar-light">
+       <h4>PiAndAll</h4>
+
+   <div class="container-fluid justify-content-md-end">
+    
+        <a class="btn btn-warning m-3" href="/parentprofile">Home</a>
+        <a class="btn btn-danger m-3" href="/auth/parentlogout">Logout</a>
+
+      
+   </div>
+      
+   </nav>
+ 
+
+    <div class="container">
+        {{#if users}}
+         {{#each users}}
+         <div class="card-header">
+            <div class="card-body">
+                <p class="card-title">{{usernameStudent}}</p>
+                <div class="mb-3">
+                </div>
+                <br>
+                 <form action="/parentprofile/managegoals" method="post">
+               <input required type="hidden" class="form-control" id="idparents" name="idstudent" value="{{idstudent}}">
+               <input required type="hidden" class="form-control" id="usernameStudent" name="usernameStudent" value="{{usernameStudent}}">
+                 <button class="btn btn-primary" type="submit">Select/Manage Goals</button>
+              </form>
+                <a href="" class="btn btn-warning">Update Password</a>
+             
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <h1>No student added</h1>
+        {{/if}}
+
+
+    </div>
+    
+    <br><br><br><br>
+
+{{!-- This is a hardcoded one. and the data should be fetched from database for every student in the loop --}}
+

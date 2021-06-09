@@ -1,0 +1,80 @@
+
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+       <h4>PiAndAll</h4>
+
+   <div class="container-fluid justify-content-md-end">
+    
+        <a class="btn btn-warning m-3" href="/parentprofile">Home</a>
+
+      
+   </div>
+       
+   </nav>
+
+   <h1 class="text-center">Manage Goals</h1>
+
+   <div class="mt-5 text-center p-3">
+        <a style="box-shadow: 1px 5px 10px black;" class="btn btn-danger m-3 p-2" href="/parentprofile/showstudent">Go back to Students</a>
+
+        <form action="/parentprofile/managegoals/" method='post'>
+               <!-- <input required type="hidden" class="form-control" id="idparents" name="idparents" value="{{user.idparents}}"> -->
+
+        <input  name="myName" class="p-2" type="text" placeholder="Name" value="{{usernameStudent}}" readonly>
+        <input  name="idstudent" class="p-2" type="hidden" placeholder="Name" value="{{idstudent}}" >
+
+       <select required class="p-2" name="selectGrade" id="selectGrade">
+            <option value="">--Select Grade--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+          <select required class="p-2" name="selectGoal" id="selectGoal">
+            <option value="">--Select Goal--</option>
+            <option value="COGAT">COGAT</option>
+            
+        </select>
+
+        
+        
+          <select required class="p-2" name="selectHour" id="selectHour">
+            <option value="">--Select Hour--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        
+
+      
+<input class="btn btn-warning" name="myDate"  type="date">
+<button type="submit" class="btn btn-success">Submit</button>
+
+
+        </form>
+            {{#if user}}
+         {{#each user}}
+
+             <div class="card mx-auto mt-5" style="width: 80%;">
+<div class="card-body">
+    <h2>{{myName}}</h2>
+    <h2>Grade : {{selectGrade}}</h2>
+    <h2>Goal : {{selectGoal}}</h2>
+    <h2>Hour : {{selectHour}}</h2>
+    <h2>{{myDate}}</h2>
+<a class="btn btn-danger">Delete Goal</a>    
+<button class="btn btn-success">Update Goal</button>   
+  
+</div>
+   </div>
+   {{/each}}
+   {{else}} <h1>no goal</h1>
+   {{/if}}
+  
+   </div>
+  
+
+

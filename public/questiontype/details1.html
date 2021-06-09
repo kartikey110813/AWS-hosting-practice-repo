@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+     rel="stylesheet" 
+     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+     crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    
+    <!-- <script src="script.js"></script> -->
+    <title>Fill details</title>
+  </head>
+  <body>
+    <div>
+
+        <form id="regForm" action="/details1.html" method="POST">
+
+          <h1>Question: Type 1 </h1>
+          
+          <!-- One "tab" for each step in the form: -->
+          <div class="tab">       
+                            
+            <label for="grade">Enter Grade</label>
+            <p>
+              <select name="grade" class="form-select" id="grade" placeholder="Grade" oninput="this.className = ''">
+                <option>--select--</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+             <option value="7">7</option>
+             <option value="8">8</option>
+             <option value="9">9</option>
+             <option value="10">10</option>
+
+            </select>
+          </p>
+          <label for="goalName">Goal Name</label>
+            <p><input name="goalName" id="goalName" placeholder="Goal Name" oninput="this.className = ''" value="COGAT" ></p>
+            <label for="subject">Enter Subject</label>
+            <p>
+              <select name="subject" class="form-select" id="subject" placeholder="Subject" oninput="this.className = ''">
+              <option value="select">--select--</option>
+              <option value="Math">Math</option>
+              <option value="English">English</option>
+            </select>
+          </p>
+          <p id="taskMath">
+              <label for="taskName">Enter Your Task</label>
+              <select name="taskNameMath" class="form-select" id="taskNameMath" placeholder="Task Name" oninput="this.className = ''">
+                <option>--select--</option>
+                <option value="Equation Building">Equation Building</option>
+                <option value="Number Series">Number Series</option>
+                <option value="Quantitative Relations">Quantitative Relations</option>
+               
+                </select>
+              
+            </p>
+            <p id="taskEng">
+              <label for="taskName">Enter Your Task</label>
+              <select name="taskNameEng" class="form-select" id="taskNameEng" placeholder="Task Name" oninput="this.className = ''">
+                <option>--select--</option>
+            
+                <option value="Sentence Completion">Sentence Completion</option>
+                <option value="Verbal Analogies">Verbal Analogies</option>
+                <option value="Verbal Classifications">Verbal Classifications</option>
+                </select>
+              
+            </p>
+            <label for="">Task Instruction</label>
+
+            <p><textarea name="taskInst" class="form-select" id="taskInst" placeholder="Task Instruction" oninput="this.className = ''" row="10" column="10"></textarea></p>
+          <label for="">Question Type</label>
+            <p><select name="quesType" class="form-select" id="questionType" placeholder="Question Type" oninput="this.className = ''">
+              <option>--select--</option>
+            <option value="multipleChoice">Multiple-Choice</option>
+            <option value="writeAnswer">Write Answer</option>
+            </select></p>
+           <label for="set">Select Set</label>
+          <p>
+            <select name="set" class="form-control" id="set" placeholder="set" oninput="this.className = ''">
+              <option>--select--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          
+          </p> 
+          </div>
+          
+          <div class="tab"> Add Questions
+            <pre class="" id="area" oninput="this.className = ''"></pre>
+            <p><input placeholder="Question" id="ques" oninput="this.className = ''"></p>
+            <p><input placeholder="Option 1" id="opt1" oninput="this.className = ''"></p>
+            <p><input placeholder="Option 2" id="opt2" oninput="this.className = ''"></p>
+            <p><input placeholder="Option 3" id="opt3" oninput="this.className = ''"></p>
+            <p><input placeholder="Option 4" id="opt4" oninput="this.className = ''"></p>
+            <p><input placeholder="Option 5" id="opt5" oninput="this.className = ''"></p>
+            <p><input placeholder="Answer" id="answer" oninput="this.className = ''"></p>
+            <p><input placeholder="Answer Explanation" id="answerExp" oninput="this.className = ''"></p>
+            <p><input name="myArray" placeholder="array" id="array" hidden oninput="this.className = ''"></p>
+            <button id="addButton" type="button">Add Question</button>
+          </div>
+
+          <div style="overflow:auto;">
+            <div style="float:right;">
+              <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+              <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              <button type="submit" id="Submit_Btn"  style="display:none;">Submit</button>
+            </div>
+          </div>
+          
+          <!-- Circles which indicates the steps of the form: -->
+          <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+           
+          </div>
+          
+          </form>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="../js/index.js"></script>
+  </body>
+  </html>
