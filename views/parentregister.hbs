@@ -1,0 +1,72 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+       <h4>PiAndAll</h4>
+
+   <div class="container-fluid justify-content-md-end">
+    
+        <a class="btn btn-warning" href="/">Home</a>
+      
+   </div>
+       
+   </nav>
+
+       <br><br><br><br><br>
+    {{#if message}}
+    <h4 class="alert alert-danger">{{ message }}</h4>
+    {{/if}}
+     {{#if message1}}
+    <h4 class="alert alert-danger">{{ message1 }}</h4>
+    {{/if}}
+<div class="container mt-4">
+    <div class="card mx-auto" style="width: 30rem;">
+        <div class="card-header bg-primary">
+            <h5>Register Form for parents</h5>
+        </div>
+          <div class="card-body">
+        <form action="/auth/parentregister" method="POST">
+        <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input required type="email" class="form-control" id="email" name="parentemail">
+            </div>
+           <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input required type="password" class="form-control" id="password" name="parentpassword">
+            </div>
+             <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input required type="password" class="form-control" id="confirmPassword" name="parentconfirmPassword">
+            </div>
+            <div class="mb-3">
+                <label for="parentFirstName" class="form-label">First Name</label>
+                <input required type="text" class="form-control" id="parentFirstName" name="parentFirstName">
+            </div>
+            <div class="mb-3">
+                <label for="parentLastName" class="form-label">Last Name</label>
+                <input required type="text" class="form-control" id="parentLastName" name="parentLastName">
+            </div>
+            <div class="mb-3">
+                <label for="Address1" class="form-label">Address 1</label>
+                <input required type="text" class="form-control" id="Address1" name="Address1">
+            </div>
+            <div class="mb-3">
+                <label for="Address2" class="form-label">Address 2(Optional)</label>
+                <input type="text" class="form-control" id="Address2" name="Address2">
+            </div>
+            <div class="mb-3">
+                <label for="State" class="form-label">State</label>
+                <input required type="text" class="form-control" id="State" name="State">
+            </div>
+            <div class="mb-3">
+                <label for="Country" class="form-label">Country</label>
+                <input required type="text" class="form-control" id="Country" name="Country">
+            </div><div class="mb-3">
+                <label for="Zipcode" class="form-label">Zipcode</label>
+                <input required type="text" class="form-control" id="Zipcode" name="Zipcode">
+            </div>
+            <button type="submit" class="btn btn-success">Register Parent</button>
+        </form>
+    </div>
+    </div>
+
+  
+</div>

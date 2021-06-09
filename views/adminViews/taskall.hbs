@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+    crossorigin="anonymous">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <title>All the task</title>
+  </head>
+  <body>
+     <div class="container">
+  <a class="btn btn-primary mt-3 mb-3" href="/selectType.html">Go back</a>
+      <h1 class="mt-5 mb-5">Select the subject to display task of that subject</h1>
+    <form method="POST" action="/taskall">
+      <div class="mb-3">
+        <label for="subjectname">Select subject</label>
+        <select class="form-select" aria-label="Default select example" id="subjectName" name="subjectName">
+      <option value="open">Open this select menu</option>
+      <option value="Maths">Math</option>
+      <option value="English">English</option>
+      <option value="All">All subjects</option>
+    </select>
+        <label for="grade">Select grade</label>
+    <select class="form-select" aria-label="Default select example" id="grade" name="grade">
+      <option value="open">Open this select menu</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+      </div>
+  <button type="submit" id="getData" class="btn btn-primary">Get data</button>
+</form>
+
+ <div class="mt-5 mb-5">
+     <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Task Id</th>
+      <th scope="col">subject</th>
+      <th scope="col">Task Name</th>
+      <th scope="col">Goal</th>
+      <th scope="col">Sequence</th>
+      <th scope="col">Hours</th>
+    </tr>
+  </thead>
+<form action="/taskSquence" method="POST">
+   {{#if show}}
+      {{#each show}}
+ 
+     
+  <tbody>
+    <tr>
+      <th scope="row" ><input type="text" value="{{taskId}}" name="taskID" readonly></th>
+      <th scope="row" ><input type="text" value="{{subject}}" name="subject" readonly></th>
+      <th scope="row" ><input type="text" value="{{taskName}}" name="taskName" readonly></th>
+      <td><input type="text" value="{{goalName}}" name="goalName" readonly></td>
+      <td><input type="number" name="sequence"></td>
+      <td><input type="number" name="hour"></td>
+      <input type="text" value="{{gradeId}}" hidden name="gradeId" readonly>
+      <input type="text" value="{{quesArray}}"hidden name="quesArray" readonly>
+    </tr>
+  </tbody>
+
+
+{{/each}}
+      {{/if}}
+
+</table>
+     <button id="subBtn" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+ </div>
+   
+   
+    </div>
+  
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+    crossorigin="anonymous">
+    </script>
+
+   
+
+  </body>
+</html>
