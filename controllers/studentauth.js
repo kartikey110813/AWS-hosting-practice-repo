@@ -122,6 +122,26 @@ console.log(decoded.id);
      })
     }
   })
+
+  const idstudent = req.body.idstudent;
+  const taskID = req.body.taskID;
+  const ques = req.body.ques;
+  const option1 = req.body.option1;
+  const option2 = req.body.option2;
+  const option3 = req.body.option3;
+  const option4 = req.body.option4;
+  const option5 = req.body.option5;
+  const ans = req.body.ans;
+  const correctAns= req.body.correctAns;
+
+  db.query('INSERT INTO progresstrackertaskdetails SET ?',{idstudent:idstudent,taskId:taskID,taskStatusJson:`[{"ques":"${ques}","option1":"${option1}","option2":"${option2}","option3":"${option3}","option4":"${option4}","option5":"${option5}","Student_answer":"${ans}","CorrectAns":"${correctAns}"}]`},(error,result) => {
+      if(error) {
+        console.log(error)
+      }
+      else {
+          res.redirect('/studentprofile/datasubmitted')
+      }
+  })
 }
 }
 

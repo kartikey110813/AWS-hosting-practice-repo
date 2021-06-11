@@ -81,9 +81,11 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     //   });
 
 router.get('/studentprofile',studentController.showTest)
+router.post('/studentprofile',studentController.showTest)
 
-
-
+router.get('/studentprofile/datasubmitted',(req,res) => {
+  res.render('datasubmitted')
+})
 
 
 
@@ -95,6 +97,7 @@ router.post('/parentprofile',studentController.studentregister)
 router.get('/parentprofile/managegoals/goaladded', (req, res) =>{
   res.render('Goaladded')
 })
+
 
 
 

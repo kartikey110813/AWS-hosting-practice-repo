@@ -15,6 +15,8 @@ const parentselect = require("./models/parentselect");
 const multipleChoiceEnglish = require("./models/adminModels/multipleChoiceEnglish");
 const multipleChoiceMath = require("./models/adminModels/multipleChoiceMath");
 const ProgresstrackerDetails = require('./models/adminModels/ProgresstrackerDetails')
+const Progresstrackersummary = require('./models/adminModels/progresstrackersummary');
+const ProgresstrackerTaskDetails = require('./models/adminModels/ProgresstrackerTaskDetails')
 const goalSequence = require("./models/adminModels/goalSequence");
 const sequelize = require("./util/database");
 
