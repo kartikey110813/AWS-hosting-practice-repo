@@ -1,14 +1,11 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../util/database");
-const uuid = require("uuidv4")
+const uuid = require("uuid")
 const goal = require("./goal");
 const multipleChoiceEnglish = sequelize.define(
   "multipleChoiceEnglish",
   {
-    taskId: {
-      type: Sequelize.INTEGER, allowNull: true, primaryKey: true, autoIncrement: true
-      
-    },
+    taskId: { type: Sequelize.INTEGER, allowNull: true, primaryKey: true, autoIncrement: true},
 
     gradeId: { type: Sequelize.INTEGER, allowNull: false },
     goalID: {
@@ -32,7 +29,4 @@ const multipleChoiceEnglish = sequelize.define(
   }
 );
 
-multipleChoiceEnglish.removeAttribute('id');
-
-'use strict'
 module.exports = multipleChoiceEnglish;

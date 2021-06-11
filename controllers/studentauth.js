@@ -159,11 +159,11 @@ if(req.cookies.jwt) {
           gradeID : selectGrade,
           goalName : selectGoal
         }
-      }).then(result => {console.log(result);})
+      })
       .then(
         (result = []) => {
         for(let i = 0; i< result.length; i++) {
-          return  progresstrackerDetails.create({
+            progresstrackerDetails.create({
               idstudent : idstudent,
               goalId : selectGoal,
               taskID : result[i].taskID,
@@ -177,11 +177,12 @@ if(req.cookies.jwt) {
         }
       )
       .catch(err => console.error(err))
-      .then((result) => {console.log(result);})
+      .then((result = []) => {console.log(result);})
       .catch(err => {console.error(err);})
+      // res.redirect('Goaladded')
+
     }
 
-      //  res.redirect('Goaladded')
   })
 
 // db.query('INSERT INTO parentselect SET ?', {},(error, result) => {
