@@ -23,6 +23,7 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
     "sequelize": "^6.3.5",
+    "sequelize-json": "^2.1.2",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.8"
   }

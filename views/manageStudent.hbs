@@ -17,11 +17,11 @@
    <div class="mt-5 text-center p-3">
         <a style="box-shadow: 1px 5px 10px black;" class="btn btn-danger m-3 p-2" href="/parentprofile/showstudent">Go back to Students</a>
 
-        <form action="/parentprofile/managegoals/" method='post'>
+        {{!-- <form action="/parentprofile/managegoals/" method='post'> --}}
                <!-- <input required type="hidden" class="form-control" id="idparents" name="idparents" value="{{user.idparents}}"> -->
 
         <input  name="myName" class="p-2" type="text" placeholder="Name" value="{{usernameStudent}}" readonly>
-        <input  name="idstudent" class="p-2" type="hidden" placeholder="Name" value="{{idstudent}}" >
+        <input  name="idstudent" class="p-2" type="hidden" placeholder="Name" id="idStudent" value="{{idstudent}}" >
 
        <select required class="p-2" name="selectGrade" id="selectGrade">
             <option value="">--Select Grade--</option>
@@ -50,11 +50,11 @@
         
 
       
-<input class="btn btn-warning" name="myDate"  type="date">
-<button type="submit" class="btn btn-success">Submit</button>
+<input class="btn btn-warning" name="myDate" id="date"  type="date">
+<button type="submit" id="submitParentSelect" class="btn btn-success">Submit</button>
 
 
-        </form>
+        {{!-- </form> --}}
             {{#if user}}
          {{#each user}}
 
@@ -76,5 +76,6 @@
   
    </div>
   
+<script src="/js/parent.js"></script>
 
 

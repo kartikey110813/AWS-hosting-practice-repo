@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../util/database");
+const JsonField = require('sequelize-json')
 const goalSequence = sequelize.define(
   "goalSequence",
   {
@@ -14,7 +15,7 @@ const goalSequence = sequelize.define(
     goalName: { type: Sequelize.STRING, allowNull: false },
     sequence: { type: Sequelize.INTEGER, allowNull: false },
     hour: { type: Sequelize.INTEGER, allowNull: false },
-    quesArray:{type:Sequelize.STRING,allowNull:false}
+    quesArray:{type:Sequelize.JSON,allowNull:false}
   },
   {
     timestamps: false,

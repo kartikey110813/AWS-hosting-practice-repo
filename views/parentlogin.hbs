@@ -22,9 +22,18 @@
         <div class="card-body">
             <form action="/auth/parentlogin" method="POST">
 
+{{#if result}}
+<h4 class="alert alert-danger">Parent does not Exist</h4>
+                    {{/if}}
+
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email Address</label>
                     <input required type="email" class="form-control" id="email" name="parentemail">
+                   
+                </div>
+                <div class="mb-3">
+ 
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>

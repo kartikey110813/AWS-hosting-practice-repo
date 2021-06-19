@@ -22,6 +22,10 @@
 
            <div class="card-body">
         <form action="/auth/studentlogin" method="POST">
+        
+{{#if result}}
+<h4 class="alert alert-danger">Student does not Exist</h4>
+                    {{/if}}
             
             <div class="mb-3">
                 <label for="name" class="form-label">Username</label>
