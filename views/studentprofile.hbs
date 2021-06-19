@@ -94,21 +94,19 @@
       
 
 
-    {{#if test}}
-    {{#each test}}
-
   <script>
     
- disabledInput =  document.getElementById("disabledInput").value;
+ let disabledInput =  document.getElementById("disabledInput").value;
 console.log(disabledInput)
-        obj = JSON.parse(disabledInput);
-       ques = obj.map((question) => question.ques)
-       option2 = obj.map((question) => question.option2)
-       option1 = obj.map((question) => question.option1)
-       option3 = obj.map((question) => question.option3)
-       option4 = obj.map((question) => question.option4)
-       option5 = obj.map((question) => question.option5)
-       Answer = obj.map((question) => question.Answer)
+       let obj = JSON.parse(disabledInput);
+        console.log(obj)
+       let ques = obj.map((question) => question.ques)
+      let option2 = obj.map((question) => question.option2)
+      let option1 = obj.map((question) => question.option1)
+      let option3 = obj.map((question) => question.option3)
+      let option4 = obj.map((question) => question.option4)
+      let option5 = obj.map((question) => question.option5)
+      let Answer = obj.map((question) => question.Answer)
       document.getElementById("questionShow").value = "Ques :- " +ques
       document.getElementById("questionShow1").value = "A) : "+option1
       document.getElementById("questionShow2").value = "B) : "+option2
@@ -122,8 +120,7 @@ console.log(disabledInput)
 
       
   </script>
-{{/each}}
-{{/if}}
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

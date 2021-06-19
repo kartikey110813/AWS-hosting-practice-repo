@@ -17,15 +17,18 @@ exports.parentlogin = async (req,res) => {
               message: 'please provide email and password'
           })
       }
-    
+
+     
+
     db.query('SELECT * FROM parents WHERE parentemail = ?',[parentemail], async (error,result) => {
       if(error) {
           console.log(error)
       }
-      console.log(result)
+      console.log(result);
+
       if(!result || !(await bcrypt.compare(parentpassword,result[0].parentpassword) )) {
           res.status(401).render('parentlogin',{
-              message: 'The email or the password is incorrect'
+              message: 'The email or the password is incorrect',
           })
       }
       else {
@@ -50,8 +53,17 @@ exports.parentlogin = async (req,res) => {
     })
   }
     catch(error) {
+        console.log("neeche error hai");
         console.log(error)
     }
+    db.query('SELECT * FROM parents', (error,result) => {
+      if (result) {
+        res.render('parentlogin',{
+          result:result
+        })
+      }
+
+    })
     
   }
   
@@ -66,11 +78,17 @@ exports.parentregister = (req,res) => {
                 message: 'the email has been taken'
             })
         }
+        else if(parentpassword.length < 8){
+          return res.render('parentregister',{
+            message:"Password must be 8 characters long"
+          })
+      }
         else if(parentpassword != parentconfirmPassword) {
             return res.render('parentregister',{
                 message: 'password do not match'
             })
         }
+        
         let hashedPassword = await bcrypt.hash(parentpassword,8)
         console.log(hashedPassword)
         db.query('INSERT INTO parents SET ?',{parentemail: parentemail ,parentpassword : hashedPassword,parentFirstName:parentFirstName,parentLastName:parentLastName,Address1:Address1,Address2:Address2,State:State,Country:Country,Zipcode:Zipcode},(error,results) => {
