@@ -92,71 +92,52 @@ exports.studentregister = async (req,res) => {
             })
         }
         let hashedPassword = await bcrypt.hash(passwordStudent,8)
+        let count = 0;
         db.query('INSERT INTO students SET ?',{usernameStudent : usernameStudent,passwordStudent : hashedPassword ,idparents: idparents,studentFirstName:studentFirstName,studentLastName:studentLastName},(error,results) => {
-            if(error) {
+          if (count > 5) {
+            res.send("Cannot Add students More than 5");  
+          }
+             if(error) {
                 console.log(error);
             }
             else {
-              
-             Students.findAll()
-             .then(result => {
-               res.json(result)
-             })
-             .catch(err => {console.error(err);})
-                
+               res.redirect('/parentprofile/showstudent')
+               count += 1;
             }
         })
     })
    
 }
 
-exports.showTest = async(req, res) => {
-  console.log("above cookies")
-console.log(req.cookies)
+//post request from showstudent to mangegoals
+exports.showToManage = async(req,res) => {
+  const idstudent = req.query.idstudent;
+  const usernameStudent = req.query.usernameStudent;
+  console.log("params",req.query)
 if(req.cookies.jwt) {
   const decoded = await promisify(jwt.verify)(
     req.cookies.jwt,
     process.env.JWT_secret
   );
-
-  console.log("decoded show student");
-console.log(decoded.id);
-  console.log(decoded);
-  db.query('SELECT * from goalsequence,parentselect WHERE goalsequence.gradeId = parentselect.selectGrade AND parentselect.idstudent = ?',[decoded.id],(error, result) => {
-    if (error){
-     console.log(error);
+ 
+  db.query('SELECT * FROM parentselect WHERE parentselect.idparents = ?',[decoded.id],(error,result) => {
+    console.log("neeche dekh");
+    console.log(result);
+    
+    if (error) {
+      console.log(error); 
     }
     else{
-     res.render('studentprofile',{
-       test:result
-     })
+     res.render('manageStudent',{
+      idstudent : idstudent,
+      usernameStudent:usernameStudent,
+        user:result
+      })
     }
   })
-
-  const idstudent = req.body.idstudent;
-  const taskID = req.body.taskID;
-  const ques = req.body.ques;
-  const option1 = req.body.option1;
-  const option2 = req.body.option2;
-  const option3 = req.body.option3;
-  const option4 = req.body.option4;
-  const option5 = req.body.option5;
-  const ans = req.body.ans;
-  const correctAns= req.body.correctAns;
-
-  db.query('INSERT INTO progresstrackertaskdetails SET ?',{idstudent:idstudent,taskId:taskID,taskStatusJson:`[{"ques":"${ques}","option1":"${option1}","option2":"${option2}","option3":"${option3}","option4":"${option4}","option5":"${option5}","Student_answer":"${ans}","CorrectAns":"${correctAns}"}]`},(error,result) => {
-      if(error) {
-        console.log(error)
-      }
-      else {
-          res.redirect('/studentprofile/datasubmitted')
-      }
-  })
 }
 }
-
-
-
+//POST REQUEST
 exports.managingGoals = async (req, res) => {
   const idstudent = req.body.idstudent;
   const usernameStudent = req.body.usernameStudent;
@@ -165,19 +146,6 @@ if(req.cookies.jwt) {
     req.cookies.jwt,
     process.env.JWT_secret
   );
-  db.query('SELECT * FROM parentselect WHERE parentselect.idparents = ?',[decoded.id],async(error,result) => {
-          if (error) {  
-      console.log(error); 
-    }
-    else{
-     res.render('manageStudent',{
-        user:result,
-        usernameStudent : usernameStudent,
-        idstudent: idstudent
-      });
-    
-    }
-  })
   let {idstudent,myName,selectGrade,selectGoal,selectHour,myDate} = req.body;
   db.query('INSERT INTO parentselect SET ?', {idstudent:idstudent,idparents:decoded.id,myName:myName,selectGrade:selectGrade,selectGoal:selectGoal,selectHour:selectHour,myDate:myDate}, async(error, result) => {
     if (error) {
@@ -207,7 +175,10 @@ if(req.cookies.jwt) {
         }
       )
       .catch(err => console.error(err))
-      .then((result = []) => {console.log(result) })
+      .then((result = []) => {console.log(result) 
+      res.redirect('Goaladded')
+      
+      })
       .catch(err => {console.error(err);})
       // res.redirect('Goaladded')
 
@@ -215,57 +186,9 @@ if(req.cookies.jwt) {
 
   })
 
-// db.query('INSERT INTO parentselect SET ?', {},(error, result) => {
-//   if (error) {
-//     console.log(error);
-//   }
-//   else{
-//     console.log(myName);
-    
-//    res.redirect('/parentprofile/managegoals/goaladded')
-
-//   }
-// })
-
-
- 
-    
-  
-
 }
 }
 
-exports.showManageGoals = async (req, res) => {
-  console.log("above cookies")
-  console.log(req.cookies)
-  if(req.cookies.jwt) {
-    const decoded = await promisify(jwt.verify)(
-      req.cookies.jwt,
-      process.env.JWT_secret
-    );
-  
-    console.log("decoded show student");
-  console.log(decoded.id);
-    console.log(decoded);
-
-        
-    db.query('SELECT * FROM parentselect WHERE parentselect.idparents = ?',[decoded.id],(error,result) => {
-      console.log("neeche dekh");
-      console.log(result);
-      
-      if (error) {
-        console.log(error); 
-      }
-      else{
-       res.render('manageStudent',{
-          user:result
-        })
-      }
-    })    
-
-
-    }  
-}
 
 exports.showStudent = async (req,res) => {
   console.log("above cookies")

@@ -1,1 +1,7 @@
-<h1>Done sir!</h1>
+{{#if message}}
+  <div>
+    <h5 class="alert alert-success">{{message}}</h5>
+  </div>
+  {{/if}}
+
+  <a href="/auth/logout"><button class="btn btn-primary">Logout</button></a>

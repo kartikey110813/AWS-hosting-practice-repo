@@ -28,6 +28,7 @@
 
   </nav>
 
+
   <br>
     <h1 class="text-center"> Student's Dashboard</h1>
         <form action="/studentprofile" method="POST">
@@ -48,9 +49,9 @@
         Hour : <strong>{{hour}}</strong>  <br>
 
         <hr>
-        {{!-- <p id="showques"> Questions: <strong>{{quesArray}}</strong></p> --}}
+        <p id="showques"> Questions: <strong>{{quesArray}}</strong></p>
 
-        <input  id="disabledInput" type="hidden" value="{{quesArray}}">
+        <input  class="disabledInput" type="hidden" value="{{quesArray}}">
           <div class="card " style="border-radius: 25px;">
             <div class="card-body">
 
@@ -96,27 +97,35 @@
 
   <script>
     
- let disabledInput =  document.getElementById("disabledInput").value;
-console.log(disabledInput)
-       let obj = JSON.parse(disabledInput);
+ let disabledInput =  document.getElementsByClassName("disabledInput")
+console.log(disabledInput[1].value)
+
+ for(var i=0; i<disabledInput.length; i++){
+console.log(disabledInput[i].value)
+
+       let obj = JSON.parse(disabledInput[i].value);
         console.log(obj)
-       let ques = obj.map((question) => question.ques)
-      let option2 = obj.map((question) => question.option2)
+
+
+       let ques = obj.map((question) =>question.ques)
+       console.log(ques)
       let option1 = obj.map((question) => question.option1)
+      let option2 = obj.map((question) => question.option2)
       let option3 = obj.map((question) => question.option3)
       let option4 = obj.map((question) => question.option4)
       let option5 = obj.map((question) => question.option5)
       let Answer = obj.map((question) => question.Answer)
+    
+
       document.getElementById("questionShow").value = "Ques :- " +ques
       document.getElementById("questionShow1").value = "A) : "+option1
       document.getElementById("questionShow2").value = "B) : "+option2
       document.getElementById("questionShow3").value = "C) : "+option3
       document.getElementById("questionShow4").value = "D) : "+option4
       document.getElementById("questionShow5").value = "E) : "+option5
-      document.getElementById("answer").value = "ans)" + Answer
+      document.getElementById("answer").value = "ans)" + Answer;
 
-
-
+ }
 
       
   </script>

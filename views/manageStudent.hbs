@@ -17,7 +17,7 @@
    <div class="mt-5 text-center p-3">
         <a style="box-shadow: 1px 5px 10px black;" class="btn btn-danger m-3 p-2" href="/parentprofile/showstudent">Go back to Students</a>
 
-        {{!-- <form action="/parentprofile/managegoals/" method='post'> --}}
+        <form action="/parentprofile/managestudentgoals/managegoals" method='post'>
                <!-- <input required type="hidden" class="form-control" id="idparents" name="idparents" value="{{user.idparents}}"> -->
 
         <input  name="myName" class="p-2" type="text" placeholder="Name" value="{{usernameStudent}}" readonly>
@@ -54,7 +54,7 @@
 <button type="submit" id="submitParentSelect" class="btn btn-success">Submit</button>
 
 
-        {{!-- </form> --}}
+        </form>
             {{#if user}}
          {{#each user}}
 

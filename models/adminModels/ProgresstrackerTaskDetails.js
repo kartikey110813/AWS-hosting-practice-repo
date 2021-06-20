@@ -11,7 +11,14 @@ const ProgresstrackerTaskDetails = sequelize.define(
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    taskStatusJson: { type: Sequelize.JSON, allowNull: false },
+    taskStatusJson: { type: Sequelize.TEXT,
+      get: function () {
+        return JSON.parse(this.getDataValue('value'));
+    },
+    set: function (value) {
+        this.setDataValue('value', JSON.stringify(value));
+    },
+      allowNull: false  },
   },
   {
     timestamps: false,

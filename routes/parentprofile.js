@@ -8,8 +8,11 @@ router.get('/showstudent',studentController.showStudent);
 // router.post('/managegoals',studentController.manageStudentGoals);
 // router.get('/managegoals',studentController.manageStudentGoals);
 
-router.get('/managegoals',studentController.showManageGoals);
-router.post('/managegoals',studentController.managingGoals);
+
+router.post('/managestudentgoals/managegoals',studentController.managingGoals);
+router.get('/managestudentgoals',studentController.showToManage);
+
+// router.get('/managestudentgoals',studentController.showStudent)
 
 
 

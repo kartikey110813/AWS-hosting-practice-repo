@@ -1,6 +1,4 @@
-
-
-   <nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light">
        <h4>PiAndAll</h4>
 
    <div class="container-fluid justify-content-md-end">
@@ -25,7 +23,8 @@
     <div class="card mx-auto" style="width: 30rem;">
         <div class="card-body">
             <h3>Add Student</h3>
-                <div class="mb-3">
+        <form action="/parentprofile" method="POST">
+            <div class="mb-3">
                 <label for="name" class="form-label">Username</label>
                 <input required type="text" class="form-control" id="name" name="usernameStudent">
             </div>
@@ -49,40 +48,22 @@
             <div class="mb-3">
                 <input required type="hidden" class="form-control" id="idparents" name="idparents" value="{{user.idparents}}">
             </div>
-            <button type="submit" class="btn btn-success" id="parentSubmit">Register Student</button>
-        </div>
+            <button type="submit" class="btn btn-success">Register Student</button>
+        </form>
         
+            {{#if message}}
+            <h4 class="alert alert-success">{{ message }}</h4>
+            {{/if}}
+        </div>
     <h6 class="text-center">Note : You cannot add more than 5 students.</h6>
     </div>
-
-    <div id="showing_student">{{usernameStudent}}</div>
 
     <br><br><br><br>
 
 {{!-- This is a hardcoded one. and the data should be fetched from database for every student in the loop --}}
-  <div class="container">
-        {{#if users}}
-         {{#each users}}
-         <div class="card-header">
-            <div class="card-body">
-                <p class="card-title">{{usernameStudent}}</p>
-                <div class="mb-3">
-                </div>
-                <br>
-                 <form action="/parentprofile/managegoals" method="post">
-               <input required type="hidden" class="form-control" id="idparents" name="idstudent" value="{{idstudent}}">
-               <input required type="hidden" class="form-control" id="usernameStudent" name="usernameStudent" value="{{usernameStudent}}">
-                 <button class="btn btn-primary" type="submit">Select/Manage Goals</button>
-              </form>
-                <a href="" class="btn btn-warning">Update Password</a>
-             
-            </div>
-        </div>
-        {{/each}}
-        {{else}}
-        <h1>No student added</h1>
-        {{/if}}
+     
+ <div class="container">
+        
 
-
-    </div>
-<script src="/js/parent.js"></script>
+  </div>
+    
