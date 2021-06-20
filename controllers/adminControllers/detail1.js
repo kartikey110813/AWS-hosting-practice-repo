@@ -26,6 +26,7 @@ exports.detail = async (req, res, next) => {
   const quesType = req.body.quesType;
   const set = req.body.set;
   const quesArray = req.body.myArray;
+ 
   
   const response  =  await goal.findAll();
   const result = response[0].goalId

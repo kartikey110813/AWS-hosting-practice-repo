@@ -106,14 +106,18 @@ if(req.cookies.jwt) {
   console.log("decoded show student");
 console.log(decoded.id);
   console.log(decoded);
-  db.query('SELECT * from goalsequence,parentselect WHERE goalsequence.gradeId = parentselect.selectGrade AND parentselect.idstudent = ?',[decoded.id],(error, result) => {
+  db.query('SELECT * from goalsequence,parentselect WHERE goalsequence.gradeId = parentselect.selectGrade AND parentselect.idstudent = ?',[decoded.id],(error, results) => {
     if (error){
      console.log(error);
     }
     else{
-      console.log(typeof(result[0].quesArray))
+      for(let i =0;i < results.length ; i++) {
+        
+        results[i].quesArray = JSON.parse(results[i].quesArray)
+    }
+      console.log(results);
      res.render('studentprofile',{
-       test:result
+       test:results
      })
     }
   })

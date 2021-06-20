@@ -49,7 +49,14 @@
         Hour : <strong>{{hour}}</strong>  <br>
 
         <hr>
-        <p id="showques"> Questions: <strong>{{quesArray}}</strong></p>
+        {{#quesArray}}
+        <p id="showques"> option1: <strong>{{option1}}</strong></p>
+        <p id="showques"> option2: <strong>{{option2}}</strong></p>
+        <p id="showques"> option3: <strong>{{option3}}</strong></p>
+        <p id="showques"> quesstionId: <strong>{{questionID}}</strong></p>
+
+
+        {{/quesArray}}
 
         <input  class="disabledInput" type="hidden" value="{{quesArray}}">
           <div class="card " style="border-radius: 25px;">

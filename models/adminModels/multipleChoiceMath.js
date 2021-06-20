@@ -16,7 +16,14 @@ const multipleChoiceMath = sequelize.define(
     taskInst: { type: Sequelize.STRING, allowNull: true },
     quesType: { type: Sequelize.STRING, allowNull: true },
     set: { type: Sequelize.INTEGER, allowNull: true },
-    quesArray: { type: Sequelize.JSON, allowNull: true },
+    quesArray: { type: Sequelize.TEXT,
+      get: function () {
+        return JSON.parse(this.getDataValue('value'));
+    },
+    set: function (value) {
+        this.setDataValue('value', JSON.stringify(value));
+    },
+      allowNull: true },
   },
   {
     timestamps: false,

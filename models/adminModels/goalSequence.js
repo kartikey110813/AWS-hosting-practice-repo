@@ -15,7 +15,16 @@ const goalSequence = sequelize.define(
     goalName: { type: Sequelize.STRING, allowNull: false },
     sequence: { type: Sequelize.INTEGER, allowNull: false },
     hour: { type: Sequelize.INTEGER, allowNull: false },
-    quesArray:{type:Sequelize.JSON,allowNull:false}
+    quesArray:{
+      type: Sequelize.TEXT,
+      get: function () {
+        return JSON.parse(this.getDataValue('value'));
+    },
+    set: function (value) {
+        this.setDataValue('value', JSON.stringify(value));
+    },
+      allowNull: true
+    }
   },
   {
     timestamps: false,
