@@ -6,11 +6,11 @@ dotenv.config({
 })
 const sequelize = new Sequelize(
    'lms',
-    'root',
-    'teamdowhile',
+    'admin',
+    'Helloworld',
     {
         dialect: 'mysql',
-        host : 'localhost'
+        host : 'lms.co8hcriaiaco.us-west-2.rds.amazonaws.com'
     }
 );
 
