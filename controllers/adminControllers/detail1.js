@@ -4,12 +4,13 @@ const multipleChoiceEnglish = require("../../models/adminModels/multipleChoiceEn
 const goal = require("../../models/adminModels/goal");
 
 const db = mySql.createConnection({
-  host: process.env.DATABSE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-  port: process.env.PORT,
-  dialect: process.env.DIALECT
+   host: "lms.co8hcriaiaco.us-west-2.rds.amazonaws.com",
+    user: "admin",
+    password: "champoo7",
+    database: "lms",
+    port:3306,
+    dialect: "mysql"
+
 });
 
 

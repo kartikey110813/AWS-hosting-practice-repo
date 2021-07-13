@@ -3,12 +3,13 @@ const bcrypt = require('bcryptjs')
 const { promisify } = require('util');
 const mySql = require('mysql');
 const db = mySql.createConnection({
-    database: process.env.DATABASE,
-    host: process.env.DATABSE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    port: process.env.PORT,
-    dialect: process.env.DIALECT
+  host: "lms.co8hcriaiaco.us-west-2.rds.amazonaws.com",
+    user: "admin",
+    password: "champoo7",
+    database: "lms",
+    port:3306,
+    dialect: "mysql"
+
    
 })
 

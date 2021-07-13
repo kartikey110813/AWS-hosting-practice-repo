@@ -7,7 +7,7 @@ dotenv.config({
 const sequelize = new Sequelize(
    'lms',
     'admin',
-    'Helloworld',
+    'champoo7',
     {
         dialect: 'mysql',
         host : 'lms.co8hcriaiaco.us-west-2.rds.amazonaws.com'
